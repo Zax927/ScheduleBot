@@ -1,0 +1,17 @@
+{
+  "name": "schedule",
+  "version": "1.0.0",
+  "description": "Schedule creator and retriever",
+  "main": "schedule.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zax27",
+  "license": "ISC",
+  "dependencies": {
+    "csv": "^5.5.3",
+    "discord.js": "^12.5.3",
+    "dotenv": "^8.6.0",
+    "mysql": "^2.18.1"
+  }
+}
