@@ -1,6 +1,6 @@
 module.exports = {
-    name: 'Make Schedule',
-    description: 'Creates a schedule',
+    name: 'add',
+    description: 'Adds a schedule',
     execute(message, args) {
         if (!args.length) {
             return message.channel.send(`Please provide more arguments, ${message.author}`);

@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'Get Schedule',
+    name: 'get',
     description: 'Retrieve a schedule',
     execute(message, args) {
         if (!args.length) {

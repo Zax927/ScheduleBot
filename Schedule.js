@@ -6,10 +6,8 @@ require("dotenv").config();
 var mysql = require('mysql');
 var csv = require('csv');
 
-
 const fs = require('fs');
 const Discord = require('discord.js');
-const { request } = require("http");
 const prefix = process.env.PREFIX;
 const token = process.env.CLIENT_TOKEN;
 
@@ -21,14 +19,15 @@ const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('
 for (const file of commandFiles) {
     const command = require(`./commands/${file}`);
     client.commands.set(command.name, command);
+    console.log("Found command", file);
 }
 
 client.login(token);
 
 client.on('ready', readyDiscord);
 
-function readyDiscord() {
-    console.log('Bot activated')
+function readyDiscord(){
+    console.log('Bot activated with prefix ' + prefix)
 }
 
 
@@ -39,6 +38,7 @@ client.on('message', message => {
     const command = args.shift().toLowerCase();
 
     if (!client.commands.has(command)) return;
+    console.log(message.author.tag, "used command", command);
 
     try {
         client.commands.get(command).execute(message, args);
