@@ -3,9 +3,7 @@
 console.log('Starting...');
 
 require("dotenv").config();
-var mysql = require('mysql');
-var csv = require('csv');
-
+var csv = require('jquery-csv');
 const fs = require('fs');
 const Discord = require('discord.js');
 const prefix = process.env.PREFIX;
@@ -13,7 +11,6 @@ const token = process.env.CLIENT_TOKEN;
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
-
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
@@ -45,6 +42,6 @@ client.on('message', message => {
     }
     catch (error) {
         console.error(error);
-        message.reply('there was an error trying to execute that command!');
+        message.reply('There was an error trying to execute that command');
     }
 });
