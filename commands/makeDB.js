@@ -12,9 +12,13 @@ module.exports = {
 
                 name = args[0];
 
-                let testArray = ["test1", "test2", "test3", "test4"];
-                var out = jQuery.csv.fromArrays(testArray);
-                fs.appendFile(name + '.csv', out);
+                let testArray = [];
+                var out = csv.fromArrays(testArray);
+                fs.appendFile(name + '.csv', out, (err) => {
+                    if(err) {
+                        console.log(err);
+                    }
+                });
             }
             else {
                 return message.channel.send('Too many arguments');
