@@ -3,22 +3,27 @@ module.exports = {
     description: 'Creates a database',
     execute(message, args) {
         if (message.member.permissions.has('ADMINISTRATOR')) {
-            if (args.length < 3) {
-                return message.channel.send(`Please provide more arguments, ${message.author}`);
-            }
-            else if (args.length === 3) {
+            if (args.length === 0) {
                 const fs = require('fs');
-                var csv = require('jquery-csv');
 
-                name = args[0];
+                name = message.guild.id;
+                console.log(name);
 
-                let testArray = [];
-                var out = csv.fromArrays(testArray);
-                fs.appendFile(name + '.csv', out, (err) => {
-                    if(err) {
-                        console.log(err);
+                var path = './';
+                path += name;
+                path += '.csv';
+                fs.access(path, fs.F_OK, (err) => {
+                    if (err) {
+                        fs.appendFile(name + '.csv', "", (err) => {
+                            if (err) {
+                                console.log(err);
+                            }
+                        });
+                        return message.channel.send("Database " + name + ".csv created");
                     }
-                });
+                    return message.channel.send(name + ".csv already exists")
+                })
+                
             }
             else {
                 return message.channel.send('Too many arguments');

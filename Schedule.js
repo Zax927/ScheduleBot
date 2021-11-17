@@ -3,7 +3,6 @@
 console.log('Starting...');
 
 require("dotenv").config();
-var csv = require('jquery-csv');
 const fs = require('fs');
 const Discord = require('discord.js');
 const prefix = process.env.PREFIX;
