@@ -33,7 +33,7 @@ client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const command = args.shift().toLowerCase();
 
-    if (!client.commands.has(command)) return;
+    if (!client.commands.has(command)) return message.channel.send("That command does not exist");
     console.log(message.author.tag, "used command", command);
 
     try {
