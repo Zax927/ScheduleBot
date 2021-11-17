@@ -10,13 +10,13 @@ module.exports = {
             var csv = require('jquery-csv');
             var name = message.guild.id;
 
-            var a = args[0];
-            var b = args[1];
-            var c = args[2];
-            var d = args[3];
-            var e = args[4];
-            var f = args[5];
-            var g = args[6];
+            var a = args[0].replace(/_/, " ");
+            var b = args[1].replace(/_/, " ");
+            var c = args[2].replace(/_/, " ");
+            var d = args[3].replace(/_/, " ");
+            var e = args[4].replace(/_/, " ");
+            var f = args[5].replace(/_/, " ");
+            var g = args[6].replace(/_/, " ");
             var u = message.author.id;
 
             var outArr = [[u, a, b, c, d, e, f, g]];

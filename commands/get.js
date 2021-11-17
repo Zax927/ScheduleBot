@@ -26,11 +26,19 @@ module.exports = {
             }
 
             arrIn = rawIn.split('\n');
-            var out;
+            var outNC; // output with no capitals
+            var outC = "";
+            var out = ["", "", "", "", "", "", ""]; // final output
 
             for (i = arrIn.length - 1; i => 0; i--) {
                 if (arrIn[i].indexOf(rqid) != -1) {
-                    out = arrIn[i].split(',');
+                    outNC = arrIn[i].split(',');
+                    for (j = 1; j < outNC.length; j++) {
+                        outC = outNC[j].split("", 1);
+                        outC = outC.toString();
+                        outC = outC.toUpperCase();
+                        out[j] = outNC[j].replace(/^[a-z]/, outC);
+                    }
                     return message.channel.send("This user's schedule is:" + "\nA: " + out[1] + "\nB: " + out[2] + "\nC: " + out[3] + "\nD: " + out[4] + "\nE: " + out[5] + "\nF: " + out[6] + "\nG: " + out[7]); // yeah i could use a for loop but it's the same every time
                 }
             }
