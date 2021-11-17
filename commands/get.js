@@ -31,7 +31,7 @@ module.exports = {
             for (i = arrIn.length - 1; i => 0; i--) {
                 if (arrIn[i].indexOf(rqid) != -1) {
                     out = arrIn[i].split(',');
-                    return message.channel.send("This user's schedule is:" + "\na: " + out[1] + "\nb: " + out[2] + "\nc: " + out[3] + "\nd: " + out[4] + "\ne: " + out[5] + "\nf: " + out[6] + "\ng: " + out[7]); // yeah i could use a for loop but it's the same every time
+                    return message.channel.send("This user's schedule is:" + "\nA: " + out[1] + "\nB: " + out[2] + "\nC: " + out[3] + "\nD: " + out[4] + "\nE: " + out[5] + "\nF: " + out[6] + "\nG: " + out[7]); // yeah i could use a for loop but it's the same every time
                 }
             }
 
