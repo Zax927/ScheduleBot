@@ -29,8 +29,9 @@ module.exports = {
                 }
                 fs.appendFile(name + '.csv', out, (err) => {
                     if (err) {
-                        console.log(err);
+                        return console.log(err);
                     }
+                    return message.channel.send(`Schedule saved for ${message.author}`);
                 });
             });
         }
