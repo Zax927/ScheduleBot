@@ -1,13 +1,13 @@
 module.exports = {
     name: 'makedb',
     description: 'Creates a database',
+    help: 'Creates a csv database. \nTakes no arguments',
     execute(message, args) {
         if (message.member.permissions.has('ADMINISTRATOR')) {
             if (args.length === 0) {
                 const fs = require('fs');
 
                 name = message.guild.id;
-                console.log(name);
 
                 var path = './';
                 path += name;
@@ -31,5 +31,5 @@ module.exports = {
         } else {
             return message.channel.send("This command is administrator only");
         }
-    },
+    }
 };

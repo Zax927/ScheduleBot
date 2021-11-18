@@ -1,6 +1,7 @@
 module.exports = {
     name: 'add',
     description: 'Adds a schedule',
+    help: 'Adds your schedule to a database. \nTakes 7 arguments: the name of the class you have for each block in order from a to g',
     execute(message, args) {
         if (args.length < 7) {
             return message.channel.send(`Please provide more arguments, ${message.author}`);
@@ -38,5 +39,5 @@ module.exports = {
         else {
             return message.channel.send('Too many arguments');
         }
-    },
+    }
 };

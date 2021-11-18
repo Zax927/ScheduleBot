@@ -1,6 +1,7 @@
 module.exports = {
     name: 'get',
     description: 'Retrieve a schedule',
+    help: 'Fetches a users schedule. \nTakes 1 argument: @mention of a user who\'s schedule you want',
     execute(message, args) {
         if (!args.length) {
             return message.channel.send(`Please provide more arguments, ${message.author}`);
@@ -51,5 +52,5 @@ module.exports = {
         else {
             return message.channel.send('Too many arguments');
         }
-    },
+    }
 };  
