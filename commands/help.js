@@ -15,8 +15,9 @@ module.exports = {
                     console.log(err)
                     return message.channel.send(args[0] + ".js does not exist or has no help text");
                 }
-                const hc = require(path);
+                const hc = require('./' + args[0] + '.js');
                 out = hc.help;
+                console.log(out)
                 return message.channel.send(out);
             })
         }
