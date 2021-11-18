@@ -17,7 +17,6 @@ module.exports = {
                 }
                 const hc = require('./' + args[0] + '.js');
                 out = hc.help;
-                console.log(out)
                 return message.channel.send(out);
             })
         }
