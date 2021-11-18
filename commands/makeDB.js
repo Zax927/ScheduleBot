@@ -3,17 +3,14 @@ module.exports = {
     description: 'Creates a database',
     help: 'Creates a csv database. \nTakes no arguments',
     execute(message, args) {
-        if (message.member.permissions.has('ADMINISTRATOR')) {
+        if (message.member.permissions.has('ADMINISTRATOR')) { // admin only command
             if (args.length === 0) {
                 const fs = require('fs');
 
-                name = message.guild.id;
-
-                var path = './';
-                path += name;
-                path += '.csv';
+                var name = message.guild.id;
+                var path = './' + name + '.csv';
                 fs.access(path, fs.F_OK, (err) => {
-                    if (err) {
+                    if (err) { // could be other errors but good enough
                         fs.appendFile(name + '.csv', "", (err) => {
                             if (err) {
                                 console.log(err);

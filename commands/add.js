@@ -9,9 +9,8 @@ module.exports = {
         else if (args.length === 7) {
             const fs = require('fs');
             var csv = require('jquery-csv');
-            var name = message.guild.id;
 
-            var a = args[0].replace(/_/, " ");
+            var a = args[0].replace(/_/, " "); // replace underscores with spaces
             var b = args[1].replace(/_/, " ");
             var c = args[2].replace(/_/, " ");
             var d = args[3].replace(/_/, " ");
@@ -20,12 +19,13 @@ module.exports = {
             var g = args[6].replace(/_/, " ");
             var u = message.author.id;
 
-            var outArr = [[u, a, b, c, d, e, f, g]];
-            var out = csv.fromArrays(outArr);
+            var outArr = [[u, a, b, c, d, e, f, g]]; // needs to be an array of arrays because that's how the library jquery-csv works
+            var out = csv.fromArrays(outArr); // translate to a csv string
 
+            var name = message.guild.id;
             var path = './' + name + '.csv';
             fs.access(path, fs.F_OK, (err) => {
-                if (err) {
+                if (err) { // there could be another error but this is good enough
                     return message.channel.send(name + ".csv does not exist, please contact an admin to create it")
                 }
                 fs.appendFile(name + '.csv', out, (err) => {

@@ -12,7 +12,7 @@ const client = new Discord.Client();
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
-for (const file of commandFiles) {
+for (const file of commandFiles) { // find commands
     const command = require(`./commands/${file}`);
     client.commands.set(command.name, command);
     console.log("Found command", file);
@@ -34,7 +34,7 @@ client.on('message', message => {
     const command = args.shift().toLowerCase();
 
     if (!client.commands.has(command)) return message.channel.send("That command does not exist");
-    console.log(message.author.tag, "used command", command, "in", message.guild.name , "(id: " + message.guild.id + ")");
+    console.log(message.author.tag, "used command", command, "in", message.guild.name , "(id: " + message.guild.id + ")"); // log the command used and who used it in what server
 
     try {
         client.commands.get(command).execute(message, args);
