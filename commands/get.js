@@ -30,18 +30,19 @@ module.exports = {
             var outC = ""; // in between variable to store first letter
             var out = ["", "", "", "", "", "", ""]; // final output
 
-            for (i = arrIn.length - 1; i => 0; i--) {
+            for (i = arrIn.length - 1; i >= 0; i--) {
                 if (arrIn[i].indexOf(rqid) != -1) {
                     outNC = arrIn[i].split(',');
                     for (j = 1; j < outNC.length; j++) { // each class starting on the second index since first is user id
                         outC = outNC[j].split("", 1); // split into characters with a limit of 1 to get the first letter
+                        outC = outC.toString();
                         outC = outC.toUpperCase();
                         out[j] = outNC[j].replace(/^[a-z]/, outC); // replace first character with capital letter
                     }
                     return message.channel.send("This user's schedule is:" + "\nA: " + out[1] + "\nB: " + out[2] + "\nC: " + out[3] + "\nD: " + out[4] + "\nE: " + out[5] + "\nF: " + out[6] + "\nG: " + out[7]); // yeah i could use a for loop but it's the same every time
                 }
-                return message.channel.send("This user has not added a schedule");
             }
+            return message.channel.send("This user has not added a schedule");
         }
         else {
             return message.channel.send('Too many arguments');
