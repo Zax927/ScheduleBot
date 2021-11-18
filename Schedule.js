@@ -34,7 +34,7 @@ client.on('message', message => {
     const command = args.shift().toLowerCase();
 
     if (!client.commands.has(command)) return message.channel.send("That command does not exist");
-    console.log(message.author.tag, "used command", command);
+    console.log(message.author.tag, "used command", command, "in", message.guild.name , "(id: " + message.guild.id + ")");
 
     try {
         client.commands.get(command).execute(message, args);
