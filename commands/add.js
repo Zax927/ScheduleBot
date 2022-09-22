@@ -19,7 +19,7 @@ module.exports = {
             var g = args[6].replace(/_/, " ");
             var u = message.author.id;
 
-            var outArr = [[u, a, b, c, d, e, f, g]]; // needs to be an array of arrays because that's how the library jquery-csv works
+            var outArr = [[u, a, b, c, d, e, f, g]]; // needs to be an array of arrays because that's how jquery-csv works
             var out = csv.fromArrays(outArr); // translate to a csv string
 
             var name = message.guild.id;

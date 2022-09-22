@@ -34,13 +34,16 @@ client.on('message', message => {
     const command = args.shift().toLowerCase();
 
     if (!client.commands.has(command)) return message.channel.send("That command does not exist");
-    console.log(message.author.tag, "used command", command, "in", message.guild.name , "(id: " + message.guild.id + ")"); // log the command used and who used it in what server
+
+    if (message.guild != null) {
+        console.log(message.author.tag, "(id: " + message.author.id + ")", "used command", command, "in", message.guild.name, "(id: " + message.guild.id + ")"); // log the command used and who used it in what server }
+    } else { console.log(message.author.tag, "(id: " + message.author.id + ")", "used command", command, "in a DM"); }
 
     try {
         client.commands.get(command).execute(message, args);
     }
     catch (error) {
         console.error(error);
-        message.reply('There was an error trying to execute that command: ' + error);
+        message.reply('Error "__' + error + '__" was encountered while trying to execute that command');
     }
 });
