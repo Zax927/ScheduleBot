@@ -33,7 +33,7 @@ module.exports = {
             for (i = arrIn.length - 1; i >= 0; i--) {
                 if (arrIn[i].indexOf(rqid) != -1) {
                     outNC = arrIn[i].split(',');
-                    for (j = 1; j < outNC.length; j++) { // each class starting on the second index since first is user id
+                    for (j = 1; j < outNC.length; j++) { // each period starting on the second index since first is user id
                         outC = outNC[j].split("", 1); // split into characters with a limit of 1 to get the first letter
                         outC = outC.toString();
                         outC = outC.toUpperCase();

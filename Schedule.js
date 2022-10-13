@@ -22,27 +22,25 @@ client.login(token);
 
 client.on('ready', readyDiscord);
 
-function readyDiscord(){
+function readyDiscord() {
     console.log('Bot activated with prefix ' + prefix)
 }
 
 
 client.on('message', message => {
     if (!message.content.startsWith(prefix) || message.author.bot) return;
-
+    
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const command = args.shift().toLowerCase();
 
     if (!client.commands.has(command)) return message.channel.send("That command does not exist");
+    if (message.guild == null) return message.channel.send("This bot is designed for servers. Please add it to a server to use it.")
 
-    if (message.guild != null) {
-        console.log(message.author.tag, "(id: " + message.author.id + ")", "used command", command, "in", message.guild.name, "(id: " + message.guild.id + ")"); // log the command used and who used it in what server }
-    } else { console.log(message.author.tag, "(id: " + message.author.id + ")", "used command", command, "in a DM"); }
+    console.log(message.author.tag, "(id: " + message.author.id + ")", "used command", command, "in", message.guild.name, "(id: " + message.guild.id + ")"); // log the command used and who used it in what server
 
     try {
         client.commands.get(command).execute(message, args);
-    }
-    catch (error) {
+    } catch (error) {
         console.error(error);
         message.reply('Error "__' + error + '__" was encountered while trying to execute that command');
     }

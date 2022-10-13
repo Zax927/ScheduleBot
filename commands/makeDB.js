@@ -1,7 +1,7 @@
 module.exports = {
     name: 'makedb',
     description: 'Creates a database',
-    help: 'Creates a csv database. \nTakes no arguments',
+    help: 'Creates a csv database. \nTakes no arguments. \nADMIN-ONLY COMMAND',
     execute(message, args) {
         if (message.member.permissions.has('ADMINISTRATOR')) { // admin only command
             if (args.length === 0) {
